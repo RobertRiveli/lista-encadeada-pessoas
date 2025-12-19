@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>2° Parcial</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="header">
+        <button id="btn-nova-pessoa" class="btn">
+          <i class="fa-solid fa-user-plus"></i>Nova Pessoa
+        </button>
+      </div>
+      <section class="card">
+        <div class="conteudo-card">
+          <button id="btn-anterior" class="nav-btn"><</button>
+
+          <div id="info-pessoa" class="secao-dados">
+            <h2 id="campo-nome" class="nome-pessoa"></h2>
+            <div class="info-cards">
+              <div class="info-card">
+                <p class="label">CPF</p>
+                <p id="campo-cpf" class="info-valor"></p>
+              </div>
+              <div class="info-card">
+                <p class="label">Endereço</p>
+
+                <p id="campo-endereco" class="info-valor"></p>
+              </div>
+            </div>
+
+            <div class="btn-acoes">
+              <button id="btn-editar" class="btn-acao btn-editar">
+                Editar
+              </button>
+              <button id="btn-excluir" class="btn-acao btn-excluir">
+                Excluir
+              </button>
+            </div>
+          </div>
+          <div
+            id="mensagem-vazia"
+            style="display: none; text-align: center; color: gray"
+          >
+            <h2>Sem pessoas no momento</h2>
+          </div>
+
+          <button id="btn-proximo" class="nav-btn">></button>
+        </div>
+      </section>
+      <div id="secao-aviso" class="aviso"></div>
+      <dialog id="modal" class="estilo-modal">
+        <section class="modal">
+          <div class="modal-header">
+            <h2 class="titulo-modal">Novo cadastro</h2>
+          </div>
+
+          <form id="form-cadastro" class="form-modal">
+            <div class="secao-input">
+              <i class="fa-solid fa-user icon" style="color: #63328b"></i>
+              <input
+                type="text"
+                name="nome"
+                id="input-nome"
+                placeholder="Nome"
+                class="form-input"
+              />
+              <span id="erro-input"></span>
+            </div>
+
+            <div class="secao-input">
+              <i class="fa-regular icon fa-id-card" style="color: #63328b"></i>
+              <input
+                type="number"
+                name="cpf"
+                id="input-cpf"
+                placeholder="CPF"
+                class="form-input"
+              />
+              <span id="erro-input"></span>
+            </div>
+            <div class="secao-input">
+              <i
+                class="fa-solid fa-location-dot icon location-icon"
+                style="color: #63328b"
+              ></i>
+              <input
+                type="text"
+                name="endereco"
+                id="input-endereco"
+                placeholder="Endereço"
+                class="form-input"
+              />
+              <span id="erro-input"></span>
+            </div>
+
+            <div class="secao-botoes-modal">
+              <button
+                id="btn-modal-cancelar"
+                type="button"
+                class="btn-modal btn-cancelar"
+              >
+                Cancelar
+              </button>
+              <button
+                id="btn-modal-salvar"
+                type="button"
+                class="btn-modal botao-salvar"
+              >
+                Salvar
+              </button>
+            </div>
+          </form>
+        </section>
+      </dialog>
+
+      <script
+        src="https://kit.fontawesome.com/de3865ba5d.js"
+        crossorigin="anonymous"
+      ></script>
+      <script type="module" src="./script.js"></script>
+    </main>
+  </body>
+</html>
