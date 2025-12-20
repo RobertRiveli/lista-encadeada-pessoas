@@ -1,7 +1,7 @@
 function atualizarCampos(pessoa, campoNome, campoCpf, campoEndereco) {
-  campoNome.innerHTML = pessoa.nome;
-  campoEndereco.innerHTML = pessoa.endereco;
-  campoCpf.innerHTML = pessoa.cpf;
+  campoNome.innerHTML = pessoa.dados.nome;
+  campoEndereco.innerHTML = pessoa.dados.endereco;
+  campoCpf.innerHTML = pessoa.dados.cpf;
 }
 
 function exibirAviso(avisoElemento, tipoAviso, textoAviso) {

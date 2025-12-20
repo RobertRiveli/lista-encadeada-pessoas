@@ -1,14 +1,10 @@
 class No {
-  nome;
-  cpf;
-  endereco;
+  dados;
   anterior;
   proximo;
 
-  constructor(nome, cpf, endereco) {
-    this.nome = nome;
-    this.cpf = cpf;
-    this.endereco = endereco;
+  constructor(dados) {
+    this.dados = dados;
   }
 }
 

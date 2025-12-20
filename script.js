@@ -1,4 +1,6 @@
 import ListaEncadeada from "./classes/ListaEncadeada.js";
+import Pessoa from "./classes/Pessoa.js";
+
 import {
   atualizarCampos,
   exibirAviso,
@@ -6,7 +8,8 @@ import {
 } from "./function/DOM.js";
 
 const lista = new ListaEncadeada();
-lista.adicionarPessoa("Roberto", 123123, "Fortaleza");
+const pessoa = new Pessoa("Roberto", 123123, "Fortaleza");
+lista.adicionarPessoa(pessoa);
 
 // Botões Card
 const btnProximo = document.getElementById("btn-proximo");
@@ -80,9 +83,9 @@ btnEditar.addEventListener("click", () => {
 
   let pessoaAtual = lista.retornarAtual();
 
-  modal.querySelector("#input-nome").value = pessoaAtual.nome;
-  modal.querySelector("#input-cpf").value = pessoaAtual.cpf;
-  modal.querySelector("#input-endereco").value = pessoaAtual.endereco;
+  modal.querySelector("#input-nome").value = pessoaAtual.dados.nome;
+  modal.querySelector("#input-cpf").value = pessoaAtual.dados.cpf;
+  modal.querySelector("#input-endereco").value = pessoaAtual.dados.endereco;
 
   modal.showModal();
 });
@@ -137,7 +140,8 @@ btnSalvar.addEventListener("click", () => {
   }
 
   if (modal.dataset.acao === "criar") {
-    lista.adicionarPessoa(nome, cpf, endereco);
+    const pessoa = new Pessoa(nome, cpf, endereco);
+    lista.adicionarPessoa(pessoa);
 
     const pessoaAtual = lista.retornarAtual();
 
@@ -156,9 +160,16 @@ btnSalvar.addEventListener("click", () => {
 
   const pessoaAtual = lista.retornarAtual();
 
-  pessoaAtual.nome = nome;
-  pessoaAtual.cpf = cpf;
-  pessoaAtual.endereco = endereco;
+  pessoaAtual.dados.nome = nome;
+
+  try {
+    pessoaAtual.dados.cpf = cpf;
+  } catch (e) {
+    exibirAviso(secaoAviso, "erro", e.message);
+    return;
+  }
+
+  pessoaAtual.dados.endereco = endereco;
 
   atualizarCampos(pessoaAtual, campoNome, campoCpf, campoEndereco);
 

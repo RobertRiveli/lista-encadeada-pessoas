@@ -3,14 +3,14 @@ import No from "./No.js";
 class ListaEncadeada {
   lista;
 
-  adicionarPessoa(nome, cpf, endereco) {
+  adicionarPessoa(pessoa) {
     if (this.lista === undefined) {
-      const no = new No(nome, cpf, endereco);
+      const no = new No(pessoa);
       this.lista = no;
       return;
     }
 
-    const no = new No(nome, cpf, endereco);
+    const no = new No(pessoa);
     let ultimoNo = this.lista;
 
     while (ultimoNo.proximo !== undefined) {
