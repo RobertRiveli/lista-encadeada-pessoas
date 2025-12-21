@@ -5,8 +5,8 @@ class Pessoa {
 
   constructor(nome, cpf, endereco) {
     this.nome = nome;
-    this.#cpf = cpf;
-    this.#endereco = endereco;
+    this.cpf = cpf;
+    this.endereco = endereco;
   }
 
   get cpf() {
@@ -30,8 +30,9 @@ class Pessoa {
   }
 
   verificarCPF(cpf) {
-    if (cpf.length !== 11) return false;
     if (typeof cpf !== "string") return false;
+    if (cpf.length !== 11) return false;
+    if (!this.verificarDigitosDiferentesCPF(cpf)) return false;
 
     if (!this.calcularDigitosCpf(cpf)) return false;
     return true;
@@ -67,6 +68,20 @@ class Pessoa {
     }
 
     return true;
+  }
+
+  verificarDigitosDiferentesCPF(cpf) {
+    const primeiroDigito = cpf[0];
+    const cpfBase = cpf.slice(0, 9);
+
+    for (let i = 0; i < cpfBase.length; i++) {
+      if (cpfBase[i] !== primeiroDigito) {
+        return true;
+      }
+    }
+
+    console.log("Digitos iguais");
+    return false;
   }
 }
 

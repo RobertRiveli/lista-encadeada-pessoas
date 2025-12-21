@@ -8,7 +8,7 @@ import {
 } from "./function/DOM.js";
 
 const lista = new ListaEncadeada();
-const pessoa = new Pessoa("Roberto", 123123, "Fortaleza");
+const pessoa = new Pessoa("Roberto", "08907901325", "Fortaleza");
 lista.adicionarPessoa(pessoa);
 
 // Botões Card
@@ -140,7 +140,14 @@ btnSalvar.addEventListener("click", () => {
   }
 
   if (modal.dataset.acao === "criar") {
-    const pessoa = new Pessoa(nome, cpf, endereco);
+    let pessoa = null;
+    try {
+      pessoa = new Pessoa(nome, cpf, endereco);
+    } catch (e) {
+      exibirAviso(secaoAviso, "erro", e.message);
+      return;
+    }
+
     lista.adicionarPessoa(pessoa);
 
     const pessoaAtual = lista.retornarAtual();
