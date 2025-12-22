@@ -5,10 +5,11 @@ import {
   atualizarCampos,
   exibirAviso,
   limparErrosModal,
+  formatarCPF,
 } from "./function/DOM.js";
 
 const lista = new ListaEncadeada();
-const pessoa = new Pessoa("Roberto", "08907901325", "Fortaleza");
+const pessoa = new Pessoa("Roberto", "089.079.013-25", "Fortaleza");
 lista.adicionarPessoa(pessoa);
 
 // Botões Card
@@ -27,6 +28,7 @@ const campoEndereco = document.getElementById("campo-endereco");
 const modal = document.getElementById("modal");
 const btnSalvar = modal.querySelector("#btn-modal-salvar");
 const btnCancelar = modal.querySelector("#btn-modal-cancelar");
+const inputCPF = modal.querySelector("#input-cpf");
 
 // Seção Aviso
 const secaoAviso = document.getElementById("secao-aviso");
@@ -112,6 +114,8 @@ btnExcluir.addEventListener("click", () => {
 });
 
 // EVENTOS DO MODAL
+
+formatarCPF(inputCPF);
 
 document.getElementById("form-cadastro").addEventListener("submit", (e) => {
   e.preventDefault();

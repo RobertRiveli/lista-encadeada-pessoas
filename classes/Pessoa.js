@@ -31,10 +31,15 @@ class Pessoa {
 
   verificarCPF(cpf) {
     if (typeof cpf !== "string") return false;
-    if (cpf.length !== 11) return false;
-    if (!this.verificarDigitosDiferentesCPF(cpf)) return false;
+    if (cpf.length !== 14) return false;
 
-    if (!this.calcularDigitosCpf(cpf)) return false;
+    const cpfSemSimbolos = cpf.replace(/[^0-9]/g, "");
+
+    if (cpfSemSimbolos.length !== 11) return false;
+
+    if (!this.verificarDigitosDiferentesCPF(cpfSemSimbolos)) return false;
+
+    if (!this.calcularDigitosCpf(cpfSemSimbolos)) return false;
     return true;
   }
 
@@ -80,7 +85,6 @@ class Pessoa {
       }
     }
 
-    console.log("Digitos iguais");
     return false;
   }
 }

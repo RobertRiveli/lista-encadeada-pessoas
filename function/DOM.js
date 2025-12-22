@@ -23,4 +23,27 @@ function limparErrosModal(modal) {
   });
 }
 
-export { atualizarCampos, exibirAviso, limparErrosModal };
+function formatarCPF(inputCPF) {
+  inputCPF.addEventListener("input", function () {
+    let tamanhoCampo = this.value.length;
+
+    this.value = this.value.replace(/[^0-9]/g, "");
+
+    if (tamanhoCampo > 3 && tamanhoCampo <= 6) {
+      this.value = this.value.replace(/(\d{3})(\d+)/, "$1.$2");
+    }
+
+    if (tamanhoCampo > 6 && tamanhoCampo <= 9) {
+      this.value = this.value.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+    }
+
+    if (tamanhoCampo > 9) {
+      this.value = this.value.replace(
+        /(\d{3})(\d{3})(\d{3})(\d+)/,
+        "$1.$2.$3-$4"
+      );
+    }
+  });
+}
+
+export { atualizarCampos, exibirAviso, limparErrosModal, formatarCPF };
